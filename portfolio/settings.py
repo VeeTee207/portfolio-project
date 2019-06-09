@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
+    # 'jobs.apps.Job',
+    # 'jobs.apps.Blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
