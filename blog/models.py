@@ -14,10 +14,9 @@ from django.db import models
 
 # Add blog to the admin
 
-"""
+
 class Blog(models.Model):
     title = models.CharField(max_length=200)
-    pub_date = models.DateTimeField(auto_now_add=true)
+    pub_date = models.DateTimeField()
     blog_text = models.TextField()
-    image = models.ImageField(upload_to='')
-"""
+    image = models.ImageField(upload_to='images/')
