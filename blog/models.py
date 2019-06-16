@@ -20,3 +20,14 @@ class Blog(models.Model):
     pub_date = models.DateTimeField()
     blog_text = models.TextField()
     image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title[:50]
+
+    def summary(self):
+        return self.blog_text[:100]
+
+    def pub_date_pretty(self):
+        # МPython's strftime directivesб % b - month,   http: // strftime.org/
+
+        return self.pub_date.strftime('%b %e,   %y')

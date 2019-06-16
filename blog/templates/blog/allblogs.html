@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Vladiir Terehov · Bootstrap</title>
+    <meta name="generator" content="">
+    <title>Vladimir's Blog</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,62 +18,37 @@
   <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" href="{% url 'home' %}">Vova Terehov</a>
+          <a class="navbar-brand" href="{% url 'home' %}">Vladimir Terehov</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Twitter</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% static 'Sample_resume.pdf' %}">Resume</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href=""{% url 'allblogs' %}"">Blog</a>
-              </li>
-
-            </ul>
-
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="#">Twitter</a>
+                <a class="nav-item nav-link" href="{% static 'Sample_resume.pdf' %}">Resume</a>
+                <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
+            </div>
           </div>
         </nav>
     </header>
 
 <main role="main">
+  <div class="container">
+  <h1 class="text-center pt-3">Welcome to Vova's blog</h1>
+  <br />
+  <h2>Latest post</h2>
+  <hr />
+  {% for blog in blogs %}
+  <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3><a>
+  {{ blog.pub_date_pretty }}
+  <br/>
+  <img class="card-img-fluid" src="{{ blog.image.url }}" height=200 width=200 />
+  <br />
+  <p>{{ blog.summary }}</p>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi, I am Vova</h1>
-      <p class="lead text-muted">Hey, my name is Vova. We live on Rogachevskaia street close to school#5 and 1 mile on the west of the rail road station. </p>
-      <p>
-        <a href="mailto:tvladmrs@hotmail.com" class="btn btn-primary my-2">Email me</a>
+  {% endfor %}
 
-      </p>
-      <img src="{% static '4x5.png' %}" height="300" />
-    </div>
-  </section>
-
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-
-
-        {% for job in jobs %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}"  />
-              <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-
-      </div>
-    </div>
   </div>
 
 </main>
